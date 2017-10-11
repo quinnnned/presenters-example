@@ -1,43 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import View from './view';
+import * as Redux from 'redux';
+import * as ReactRedux from 'react-redux';
+import presenter from './presenter';
+import reducer from './reducer'
 
+const PresentedView = ReactRedux.connect(
+    state => ({state}),
+    dispatch => ({dispatch}),
+    ({state}, {dispatch}) => presenter(state, dispatch)
+)(View);
 
-const examplePerson = {
-    name: 'Jesse Robertson',
-    navigate: () => alert('navigate to Jesse Robertson'),
-    fire: () => alert('fire Jesse Robertson'),
-    boss: {
-        name: "Shawn Khan",
-        navigate: () => alert('navigate to Shawn Khan'),
-    },
-    addSubordinate: (value) => alert("add subord: " + value),
-    subordinateCount: 10,
-    subordinates: [
-        { 
-            key: 1, 
-            name: "John Johnson",
-            navigate: () => alert('navigate to John Johnson'),
-            fire: () => alert('fire John Johnson'),
-            subordinateCount: 0, 
-            subordinates:[],
-            addSubordinate: (value) => alert('add subord '+value+' to John')
-        },
-        { 
-            key: 2, 
-            name: "Bobby Goines",
-            fire: () => alert('fire Bobby Goines'),
-            navigate: () => alert('navigate to Bobby Goines'),
-            subordinateCount: 0, 
-            subordinates:[],
-            addSubordinate: (value) => alert('add subord '+value+' to Bobby')
-        }
-    ]
-}
+const store = Redux.createStore(reducer);
 
-//// MUTATION!!!
-examplePerson.subordinates.forEach( person => {
-    person.boss = examplePerson;
-})
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+        <PresentedView />
+    </ReactRedux.Provider>,
+    document.getElementById('root')
+);
 
-ReactDOM.render(<View person={examplePerson} />, document.getElementById('root'));
