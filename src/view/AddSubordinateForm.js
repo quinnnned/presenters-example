@@ -1,7 +1,7 @@
 import React from 'react';
 import * as UI from 'react-materialize';
 
-export default function NewSubordinateForm(props) {
+export default function AddSubordinateForm(props) {
     const {person} = props;
     return (
         <UI.Row>
