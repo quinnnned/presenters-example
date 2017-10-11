@@ -13,7 +13,11 @@ export default function NewSubordinateForm(props) {
                     field.value = ''
                 }}
                 >
-                <UI.Input label="ADD SUBORDINATE" required s={12} />
+                <UI.Input 
+                    label="Subordinate Name"
+                    required 
+                    s={12} 
+                    />
             </form>
         </UI.Row>
     )
