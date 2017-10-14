@@ -4,15 +4,20 @@ describe('every actor', () => {
     Object.keys(actors).forEach( actorName => {
         describe(`${actorName}()`, () => {
             const actor = actors[actorName];
+
+            it('is a function', () => {
+                expect(typeof actor).toEqual('function');
+            })
+
             describe('output', () => {
-                it('should be an object', () => {
+                it('is an object', () => {
                     const action = actor();
                     expect(typeof action).toEqual('object');
                     expect(action).not.toEqual(null);
                 })
 
-                it(`should have a string .type property which is the SNAKE_CASE 
-                    equivalent of the actor name`, () => {
+                it(`has a string .type property which is the SNAKE_CASE 
+                    equivalent of its actor's name`, () => {
                     const action = actor();
                     expect(typeof action.type).toEqual('string');
                     expect(action.type)
