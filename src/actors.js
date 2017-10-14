@@ -7,16 +7,16 @@ export const hireEmployee = (employeeId, employeeName, supervisor) => {
     }
 }
 
-export const selectEmployee = (employee) => {
+export const selectEmployee = (employeeId) => {
     return {
         type: "SELECT_EMPLOYEE",
-        employee,
+        employeeId,
     }
 }
 
-export const terminateEmployee = (employee) => {
+export const terminateEmployee = (employeeId) => {
     return {
         type: "TERMINATE_EMPLOYEE",
-        employee,
+        employeeId,
     }
 }
