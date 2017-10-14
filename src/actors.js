@@ -1,21 +1,22 @@
-export const addSubordinate = (supervisor, name) => {
+export const hireEmployee = (employeeId, employeeName, supervisor) => {
     return {
-        type: "ADD_SUBORDINATE",
+        type: "HIRE_EMPLOYEE",
+        employeeId,
+        employeeName,
         supervisor,
-        name
     }
 }
 
-export const navigateToPerson = (person) => {
+export const selectEmployee = (employee) => {
     return {
-        type: "NAVIGATE_TO_PERSON",
-        person
+        type: "SELECT_EMPLOYEE",
+        employee,
     }
 }
 
-export const firePerson = (person) => {
+export const terminateEmployee = (employee) => {
     return {
-        type: "FIRE_PERSON",
-        person
+        type: "TERMINATE_EMPLOYEE",
+        employee,
     }
 }
