@@ -1,0 +1,354 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddSubordinateForm renders without crashing 1`] = `
+<div
+  className="row"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="col input-field s12"
+    >
+      <input
+        className=""
+        defaultValue={undefined}
+        id="input_3"
+        onChange={[Function]}
+        placeholder={undefined}
+        required={true}
+        type="text"
+      />
+      <label
+        className=""
+        data-error={undefined}
+        data-success={undefined}
+        htmlFor="input_3"
+      >
+        Subordinate Name
+      </label>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`View renders without crashing 1`] = `
+<div
+  className="container"
+>
+  <h1
+    className="center-align"
+  >
+    Organization Explorer
+  </h1>
+  <ul
+    className="collapsible popout"
+    data-collapsible="expandable"
+  >
+    <li
+      className="active"
+    >
+      <div
+        className="collapsible-header active"
+        onClick={[Function]}
+      >
+        <i
+          className="material-icons"
+        >
+          person
+        </i>
+        <a
+          onClick={[Function]}
+        >
+          Robert Robertson
+        </a>
+      </div>
+      <div
+        className="collapsible-body"
+      >
+        <div
+          className="row"
+        >
+          <h6>
+            Supervisor: 
+            <a
+              onClick={[Function]}
+            >
+              Bossy Bosserson
+            </a>
+          </h6>
+          <br />
+          <h6>
+            Subordinates (
+            2
+            ):
+          </h6>
+          <ul
+            className="collapsible popout"
+            data-collapsible="accordion"
+          >
+            <li
+              className=""
+            >
+              <div
+                className="collapsible-header"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                >
+                  person
+                </i>
+                <span>
+                  <a
+                    onClick={[Function]}
+                  >
+                    John Johnson
+                  </a>
+                  <a
+                    onClick={[Function]}
+                  >
+                    <i
+                      className="material-icons right red-text"
+                    >
+                      whatshot
+                    </i>
+                  </a>
+                </span>
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                <div
+                  className="row"
+                >
+                  <h6>
+                    Supervisor: 
+                    <a
+                      onClick={[Function]}
+                    >
+                      Robert Robertson
+                    </a>
+                  </h6>
+                  <br />
+                  <h6>
+                    Subordinates (
+                    0
+                    ):
+                  </h6>
+                  <ul
+                    className="collapsible popout"
+                    data-collapsible="accordion"
+                  >
+                    <li
+                      className=""
+                    >
+                      <div
+                        className="collapsible-header"
+                        onClick={[Function]}
+                      >
+                        <i
+                          className="material-icons"
+                        >
+                          person_add
+                        </i>
+                        Add New Subordinate
+                      </div>
+                      <div
+                        className="collapsible-body"
+                      >
+                        <div
+                          className="row"
+                        >
+                          <form
+                            onSubmit={[Function]}
+                          >
+                            <div
+                              className="col input-field s12"
+                            >
+                              <input
+                                className=""
+                                defaultValue={undefined}
+                                id="input_0"
+                                onChange={[Function]}
+                                placeholder={undefined}
+                                required={true}
+                                type="text"
+                              />
+                              <label
+                                className=""
+                                data-error={undefined}
+                                data-success={undefined}
+                                htmlFor="input_0"
+                              >
+                                Subordinate Name
+                              </label>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li
+              className=""
+            >
+              <div
+                className="collapsible-header"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                >
+                  person
+                </i>
+                <span>
+                  <a
+                    onClick={[Function]}
+                  >
+                    Bobby Bobberson
+                  </a>
+                  <a
+                    onClick={[Function]}
+                  >
+                    <i
+                      className="material-icons right red-text"
+                    >
+                      whatshot
+                    </i>
+                  </a>
+                </span>
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                <div
+                  className="row"
+                >
+                  <h6>
+                    Supervisor: 
+                    <a
+                      onClick={[Function]}
+                    >
+                      Robert Robertson
+                    </a>
+                  </h6>
+                  <br />
+                  <h6>
+                    Subordinates (
+                    0
+                    ):
+                  </h6>
+                  <ul
+                    className="collapsible popout"
+                    data-collapsible="accordion"
+                  >
+                    <li
+                      className=""
+                    >
+                      <div
+                        className="collapsible-header"
+                        onClick={[Function]}
+                      >
+                        <i
+                          className="material-icons"
+                        >
+                          person_add
+                        </i>
+                        Add New Subordinate
+                      </div>
+                      <div
+                        className="collapsible-body"
+                      >
+                        <div
+                          className="row"
+                        >
+                          <form
+                            onSubmit={[Function]}
+                          >
+                            <div
+                              className="col input-field s12"
+                            >
+                              <input
+                                className=""
+                                defaultValue={undefined}
+                                id="input_1"
+                                onChange={[Function]}
+                                placeholder={undefined}
+                                required={true}
+                                type="text"
+                              />
+                              <label
+                                className=""
+                                data-error={undefined}
+                                data-success={undefined}
+                                htmlFor="input_1"
+                              >
+                                Subordinate Name
+                              </label>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li
+              className=""
+            >
+              <div
+                className="collapsible-header"
+                onClick={[Function]}
+              >
+                <i
+                  className="material-icons"
+                >
+                  person_add
+                </i>
+                Add New Subordinate
+              </div>
+              <div
+                className="collapsible-body"
+              >
+                <div
+                  className="row"
+                >
+                  <form
+                    onSubmit={[Function]}
+                  >
+                    <div
+                      className="col input-field s12"
+                    >
+                      <input
+                        className=""
+                        defaultValue={undefined}
+                        id="input_2"
+                        onChange={[Function]}
+                        placeholder={undefined}
+                        required={true}
+                        type="text"
+                      />
+                      <label
+                        className=""
+                        data-error={undefined}
+                        data-success={undefined}
+                        htmlFor="input_2"
+                      >
+                        Subordinate Name
+                      </label>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
