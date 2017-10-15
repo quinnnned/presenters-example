@@ -5,6 +5,7 @@
   "devDependencies": {
     "jasmine-check": "^1.0.0-rc.0",
     "react-scripts": "1.0.14",
+    "react-test-renderer": "^16.0.0",
     "testcheck": "^1.0.0-rc.2"
   },
   "dependencies": {
