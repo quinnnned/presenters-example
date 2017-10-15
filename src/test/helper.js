@@ -31,6 +31,6 @@ export const exampleEmployee = {
 }
 
 //// MUTATION!!!
-exampleEmployee.subordinates.forEach( person => {
-    person.boss = exampleEmployee;
+exampleEmployee.subordinates.forEach( employee => {
+    employee.boss = exampleEmployee;
 })

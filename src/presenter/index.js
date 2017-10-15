@@ -1,7 +1,7 @@
-import {examplePerson} from '../test/helper'
+import {exampleEmployee} from '../test/helper'
 
 export default function presentState(state, dispatch) {
     return {
-        person: examplePerson
+        employee: exampleEmployee
     }
 }

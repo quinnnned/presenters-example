@@ -9,7 +9,7 @@ describe('form submit handler', () => {
             value: 'submitEvent.target[0].value'
         }] 
     }
-    const person = {
+    const employee = {
         addSubordinate: jest.fn()
     }
 
@@ -17,7 +17,7 @@ describe('form submit handler', () => {
     expect(submitEvent.preventDefault.mock.calls.length).toEqual(0)
 
     // Act
-    handleSubmit(person)(submitEvent);
+    handleSubmit(employee)(submitEvent);
 
     // Assert
     it('should prevent the default form submission', () => {

@@ -11,7 +11,7 @@ describe('View', () => {
     it('renders without crashing', () => {
         expect(
             renderer.create(
-                <View person={exampleEmployee} />
+                <View employee={exampleEmployee} />
             ).toJSON()
         ).toMatchSnapshot();
     })
@@ -21,7 +21,7 @@ describe('AddSubordinateForm', () => {
     it('renders without crashing', () => {
         expect(
             renderer.create(
-                <AddSubordinateForm person={exampleEmployee} />
+                <AddSubordinateForm employee={exampleEmployee} />
             ).toJSON()
         ).toMatchSnapshot();
     })

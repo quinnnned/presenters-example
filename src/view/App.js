@@ -1,10 +1,10 @@
 import React from 'react';
 import * as UI from 'react-materialize';
-import Person from './Person';
-import PersonLink from './PersonLink';
+import Employee from './Employee';
+import EmployeeLink from './EmployeeLink';
 
 export default function App(props) {
-    const {person} = props;
+    const {employee} = props;
     return (
         <UI.Container>
             <h1 className="center-align">
@@ -12,10 +12,10 @@ export default function App(props) {
             </h1>
             <UI.Collapsible popout defaultActiveKey={0}>
                 <UI.CollapsibleItem 
-                    header={<PersonLink person={person} />} 
+                    header={<EmployeeLink employee={employee} />} 
                     icon='person'
                     >
-                    <Person person={person} />
+                    <Employee employee={employee} />
                 </UI.CollapsibleItem>
             </UI.Collapsible>
         </UI.Container>
