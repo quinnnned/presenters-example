@@ -97,8 +97,13 @@ check.it(
 
 check.it(
     `terminateEmployee is the left inverse of hireEmployee`,
-    [any.state, any.employeeId, any.name, any.employeeId],
-    (state, employeeId, employeeName, supervisor) => {
+    any.state.then( state => [
+        state, 
+        any.employeeId.suchThat( x => state.employesById[x] === undefined ),
+        any.name,
+        any.oneOf(state.employeeIds)
+    ]),
+    ([state, employeeId, employeeName, supervisor]) => {
 
         // Define Hire State Updater
         const f = state => 
@@ -122,5 +127,46 @@ check.it(
 
         expect( g(f(state)) ).toEqual(state)
         
+    }
+)
+
+check.it(
+    `The top supervisor cannot be terminated`,
+    any.state,
+    (state) => {
+
+        // Get EmployeeId of Top Supervisor
+        const employeeId = state.employeeIds.find( employeeId => 
+            state.employeesById[employeeId].supervisor === null
+        )
+
+        // Define State Updater
+        const f = state => 
+            reducer(
+                state,
+                actors.terminateEmployee(
+                    employeeId
+                )
+            )
+        
+        expect(f(state)).toEqual(state)
+    }
+)
+
+check.it(
+    `terminateEmployee actions are idempotent`,
+    any.state.then( state => [state, any.oneOf(state.employeeIds) ]),
+    ([state, employeeId]) => {
+
+        // Define State Updater
+        const f = state => 
+            reducer(
+                state,
+                actors.terminateEmployee(
+                    employeeId
+                )
+            )
+        
+        expect( f(f(state)) ).toEqual( f(state) )
     }
 )
