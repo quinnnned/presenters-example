@@ -172,3 +172,50 @@ check.it(
         expect( f(f(state)) ).toEqual( f(state) )
     }
 )
+
+
+/*
+
+
+*/
+check.it(
+    `when a supervisor's employee is terminated, the total size of their 
+    subordinate tree decreases by one`,
+    any.state.suchThat( state => state.employeeIds.length > 1).then( state => 
+        any.oneOf(state.employeeIds)
+            .suchThat( employeeId => 
+                state.employeesById[employeeId].supervisor !== null
+            )
+            .then( employeeId => [ state, employeeId ])
+    ),
+    ([state, employeeIdToTerminate]) => {
+
+        const e = employeeIdToTerminate
+
+        // Define State Updater
+        const f = state =>
+            reducer(
+                state,
+                actors.terminateEmployee(
+                    employeeIdToTerminate
+                )
+            )
+        
+        // Define Supervisor Selector 
+        const sup = (state, employeeId) =>
+            state.employeesById[employeeId].supervisor
+
+        // Define Recursive Subordinate Tree Size Calculator
+        const size = (state, supervisor) =>
+            state.employeeIds
+                // Get Direct Subordinates
+                .filter( employeeId => sup(state, employeeId) === supervisor )
+                // Tally Each Subordinate, Plus Its Subordinate Tree 
+                .map( employeeId => 1 + size(state, employeeId) )
+                // Sum
+                .reduce( (a,b) => a + b, 0)
+
+        expect( size( f(state), sup(state, e) ) )
+            .toEqual( size(state, sup(state, e) ) - 1)
+    }
+)

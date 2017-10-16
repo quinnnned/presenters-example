@@ -20,3 +20,11 @@ export const terminateEmployee = (employeeId) => {
         employeeId,
     }
 }
+
+export const reassignEmployee = (employeeId, supervisor) => {
+    return {
+        type: "REASSIGN_EMPLOYEE",
+        employeeId,
+        supervisor
+    }
+}

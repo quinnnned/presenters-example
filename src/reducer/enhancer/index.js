@@ -1,6 +1,7 @@
 import * as Redux from 'redux'
-import rejectInvalidTerminations from './rejectInvalidTerminations'
 
+// Handle Higher-Order Business Rules. (compose applies right-to-left)
 export default Redux.compose(
-    rejectInvalidTerminations
+    require('./rejectInvalidTerminations').default,
+    require('./reassignSubordinatesOfTerminatedEmployees').default,
 )
