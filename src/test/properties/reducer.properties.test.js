@@ -5,7 +5,8 @@ require('jasmine-check').install()
 
 check.it(
     `reducing a selectEmployee action produces a new state where the selected
-    employee id equals the id passed to the selectEmployee actor`, 
+    employee id equals the id passed to the selectEmployee actor`,
+    {times: 10},
     [any.state, any.employeeId],
     (state, employeeId) => {
 
@@ -27,6 +28,7 @@ check.it(
 
 check.it(
     `selectEmployee actions are idempotent`, 
+    {times: 10},
     [any.state, any.employeeId],
     (state, employeeId) => {
         
