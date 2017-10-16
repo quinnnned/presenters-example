@@ -11,7 +11,7 @@ any.name =
 any.state = 
     any.uniqueArray(any.employeeId, {maxSize: 5})
         .then( employeeIds => {
-            const numberOfEmployees = employeeIds.length;
+            const numberOfEmployees = employeeIds.length
 
             const selectedEmployeeId = (
                 numberOfEmployees === 0 ? null : (
@@ -23,9 +23,9 @@ any.state =
             )
 
             // I don't like for loops, but performance really matters here
-            const employeesById = {};
+            const employeesById = {}
             for (let i = 0; i < numberOfEmployees; i++) {
-                const employeeId = employeeIds[i];
+                const employeeId = employeeIds[i]
                 employeesById[employeeId] = {
                     employeeName: 'John ' + employeeId,
                     supervisor: (i === 0) ? null : (
