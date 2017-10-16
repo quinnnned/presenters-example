@@ -1,6 +1,6 @@
-import {gen} from 'testcheck';
+import {gen} from 'testcheck'
 const any = {...gen}
-export default any;
+export default any
 
 any.employeeId =
     any.asciiString.notEmpty()

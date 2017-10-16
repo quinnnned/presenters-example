@@ -1,10 +1,10 @@
-import React from 'react';
-import * as UI from 'react-materialize';
-import EmployeeLink from './EmployeeLink';
-import AddSubordinateForm from './AddSubordinateForm';
+import React from 'react'
+import * as UI from 'react-materialize'
+import EmployeeLink from './EmployeeLink'
+import AddSubordinateForm from './AddSubordinateForm'
 
 export default function Employee(props) {
-    const {employee} = props;
+    const {employee} = props
     return (
         <UI.Row>
             <h6>Supervisor: <EmployeeLink employee={employee.boss} /></h6>
@@ -38,4 +38,4 @@ export default function Employee(props) {
             </UI.Collapsible>
         </UI.Row>
     )
-};
+}

@@ -13,7 +13,7 @@ describe('View', () => {
             renderer.create(
                 <View employee={exampleEmployee} />
             ).toJSON()
-        ).toMatchSnapshot();
+        ).toMatchSnapshot()
     })
 })
 
@@ -23,6 +23,6 @@ describe('AddSubordinateForm', () => {
             renderer.create(
                 <AddSubordinateForm employee={exampleEmployee} />
             ).toJSON()
-        ).toMatchSnapshot();
+        ).toMatchSnapshot()
     })
 })

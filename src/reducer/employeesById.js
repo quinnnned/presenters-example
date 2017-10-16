@@ -3,7 +3,7 @@ import {hireEmployee} from '../actors'
 const defaultState = {}
 
 export default (state = defaultState, action) => {
-    const {type, employeeId, employeeName, supervisor} = action;
+    const {type, employeeId, employeeName, supervisor} = action
 
     switch (type) {
 

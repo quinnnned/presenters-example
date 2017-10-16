@@ -1,10 +1,10 @@
-import React from 'react';
-import * as UI from 'react-materialize';
-import Employee from './Employee';
-import EmployeeLink from './EmployeeLink';
+import React from 'react'
+import * as UI from 'react-materialize'
+import Employee from './Employee'
+import EmployeeLink from './EmployeeLink'
 
 export default function App(props) {
-    const {employee} = props;
+    const {employee} = props
     return (
         <UI.Container>
             <h1 className="center-align">
@@ -19,5 +19,5 @@ export default function App(props) {
                 </UI.CollapsibleItem>
             </UI.Collapsible>
         </UI.Container>
-    );
+    )
 }

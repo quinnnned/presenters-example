@@ -1,1 +1,1 @@
-export default require('./App.js').default;
+export default require('./App.js').default

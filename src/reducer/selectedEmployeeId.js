@@ -1,6 +1,6 @@
-import {selectEmployee} from '../actors';
+import {selectEmployee} from '../actors'
 
-const defaultState = null;
+const defaultState = null
 
 export default (state = defaultState, action) => {
 
@@ -10,7 +10,7 @@ export default (state = defaultState, action) => {
             return action.employeeId
 
         default: 
-            return state;
+            return state
     }
 
 }

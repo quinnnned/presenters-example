@@ -1,7 +1,7 @@
 import any from './generators'
-import reducer from '../../reducer';
-import * as actors from '../../actors';
-require('jasmine-check').install();
+import reducer from '../../reducer'
+import * as actors from '../../actors'
+require('jasmine-check').install()
 
 check.it(
     `reducing a selectEmployee action produces a new state where the selected

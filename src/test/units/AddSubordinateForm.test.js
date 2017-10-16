@@ -17,7 +17,7 @@ describe('form submit handler', () => {
     expect(submitEvent.preventDefault.mock.calls.length).toEqual(0)
 
     // Act
-    handleSubmit(employee)(submitEvent);
+    handleSubmit(employee)(submitEvent)
 
     // Assert
     it('should prevent the default form submission', () => {
