@@ -66,8 +66,12 @@ check.it(
         // Define Supervisor Selector
         const h = state => state.employeesById[employeeId].supervisor
 
+        // Define Membership Predicate
+        const P = state => !!~state.employeeIds.indexOf(employeeId)
+
         expect( g(f(state)) ).toEqual(employeeName)
         expect( h(f(state)) ).toEqual(supervisor)
+        expect( P(f(state)) ).toEqual(true)
     }
 )
 
