@@ -5,6 +5,9 @@ export default any
 any.employeeId =
     any.asciiString.notEmpty()
 
+any.name = 
+    any.asciiString.notEmpty()
+
 any.state = 
     any.object({
         selectedEmployeeId: 

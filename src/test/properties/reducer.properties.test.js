@@ -46,7 +46,7 @@ check.it(
 check.it(
     `reducing a hireEmployee action produces a new state containing the 
     specified employee`,
-    [any.state, any.employeeId, any.string.notEmpty(), any.string.notEmpty()],
+    [any.state, any.employeeId, any.name, any.employeeId],
     (state, employeeId, employeeName, supervisor) => {
     
         // Define State Updater
@@ -77,7 +77,7 @@ check.it(
 
 check.it(
     `hireEmployee actions are idempotent`,
-    [any.state, any.employeeId, any.string.notEmpty(), any.string.notEmpty()],
+    [any.state, any.employeeId, any.name, any.employeeId],
     (state, employeeId, employeeName, supervisor) => {
         
         // Define State Updater
