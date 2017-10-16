@@ -94,3 +94,33 @@ check.it(
         expect( f(f(state)) ).toEqual( f(state) )
     }
 )
+
+check.it(
+    `terminateEmployee is the left inverse of hireEmployee`,
+    [any.state, any.employeeId, any.name, any.employeeId],
+    (state, employeeId, employeeName, supervisor) => {
+
+        // Define Hire State Updater
+        const f = state => 
+            reducer(
+                state,
+                actors.hireEmployee(
+                    employeeId,
+                    employeeName,
+                    supervisor
+                )
+            )
+
+        // Define Terminate State Updater
+        const g = state => 
+            reducer(
+                state,
+                actors.terminateEmployee(
+                    employeeId
+                )
+            )
+
+        expect( g(f(state)) ).toEqual(state)
+        
+    }
+)

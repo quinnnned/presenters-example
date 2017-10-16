@@ -1,4 +1,4 @@
-import {hireEmployee} from '../actors'
+import {hireEmployee, terminateEmployee} from '../actors'
 
 const defaultState = {}
 
@@ -12,6 +12,11 @@ export default (state = defaultState, action) => {
                 ...state,
                 [employeeId]: { employeeName, supervisor }
             }
+
+        case terminateEmployee().type:
+            const clone = {...state}
+            delete clone[employeeId]
+            return clone
         
         default:
             return state

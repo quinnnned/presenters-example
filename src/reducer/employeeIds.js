@@ -1,4 +1,4 @@
-import {hireEmployee} from '../actors'
+import {hireEmployee, terminateEmployee} from '../actors'
 
 const defaultState = []
 
@@ -19,6 +19,9 @@ export default (state = defaultState, action) => {
                     // ...otherwise append 
                     : [ ...state, employeeId ]
             )
+
+        case terminateEmployee().type:
+            return state.filter( x => x !== employeeId )
 
         default:
             return state
