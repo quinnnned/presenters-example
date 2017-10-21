@@ -9,7 +9,7 @@ any.name =
     any.asciiString.notEmpty()
 
 any.state = 
-    any.uniqueArray(any.employeeId, {maxSize: 5})
+    any.uniqueArray(any.employeeId, {minSize: 1, maxSize: 5})
         .then( employeeIds => {
             const numberOfEmployees = employeeIds.length
 
@@ -41,3 +41,10 @@ any.state =
                 employeesById
             }
         })
+
+any.stateWithSampledEmployeeId = 
+    any.state.then( state => 
+        any.oneOf(state.employeeIds).then( employeeId => 
+            [ state, employeeId ]
+        )
+    )
