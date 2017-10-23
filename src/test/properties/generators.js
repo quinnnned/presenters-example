@@ -5,6 +5,9 @@ export default any
 any.employeeId =
     any.asciiString.notEmpty()
 
+any.newEmployeeId = (state) =>
+    any.employeeId.suchThat( id => !( id in state.employeesById ) )
+
 any.name = 
     any.asciiString.notEmpty()
 
@@ -13,14 +16,9 @@ any.state =
         .then( employeeIds => {
             const numberOfEmployees = employeeIds.length
 
-            const selectedEmployeeId = (
-                numberOfEmployees === 0 ? null : (
-                    // Pick a random employee id to be selected
-                    employeeIds[
-                        Math.floor( Math.random() * ( numberOfEmployees - 1 ) )
-                    ]    
-                )
-            )
+            const selectedEmployeeId = employeeIds[
+                Math.floor( Math.random() * ( numberOfEmployees - 1 ) )
+            ]
 
             // I don't like for loops, but performance really matters here
             const employeesById = {}

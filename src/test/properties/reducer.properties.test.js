@@ -6,9 +6,8 @@ require('jasmine-check').install()
 check.it(
     `reducing a selectEmployee action produces a new state where the selected
     employee id equals the id passed to the selectEmployee actor`,
-    {times: 10},
-    [any.state, any.employeeId],
-    (state, employeeId) => {
+    any.stateWithSampledEmployeeId,
+    ([state, employeeId]) => {
 
         // Define State Updater
         const f = state => 
@@ -28,9 +27,8 @@ check.it(
 
 check.it(
     `selectEmployee actions are idempotent`, 
-    {times: 10},
-    [any.state, any.employeeId],
-    (state, employeeId) => {
+    any.stateWithSampledEmployeeId,
+    ([state, employeeId]) => {
         
         // Define State Updater
         const f = state => 
@@ -48,8 +46,17 @@ check.it(
 check.it(
     `reducing a hireEmployee action produces a new state containing the 
     specified employee`,
-    [any.state, any.employeeId, any.name, any.employeeId],
-    (state, employeeId, employeeName, supervisor) => {
+    any.stateWithSampledEmployeeId.then( ([state, supervisor]) => 
+        any.newEmployeeId(state).then( employeeId => 
+            any.name.then( employeeName => [
+                state,
+                employeeId,
+                employeeName,
+                supervisor
+            ])
+        )
+    ),
+    ([state, employeeId, employeeName, supervisor]) => {
     
         // Define State Updater
         const f = state => 
@@ -99,12 +106,16 @@ check.it(
 
 check.it(
     `terminateEmployee is the left inverse of hireEmployee`,
-    any.state.then( state => [
-        state, 
-        any.employeeId.suchThat( x => state.employesById[x] === undefined ),
-        any.name,
-        any.oneOf(state.employeeIds)
-    ]),
+    any.stateWithSampledEmployeeId.then( ([state, supervisor]) => 
+        any.newEmployeeId(state).then( employeeId => 
+            any.name.then( employeeName => [
+                state,
+                employeeId,
+                employeeName,
+                supervisor
+            ])
+        )
+    ),
     ([state, employeeId, employeeName, supervisor]) => {
 
         // Define Hire State Updater
@@ -128,7 +139,6 @@ check.it(
             )
 
         expect( g(f(state)) ).toEqual(state)
-        
     }
 )
 
@@ -157,7 +167,7 @@ check.it(
 
 check.it(
     `terminateEmployee actions are idempotent`,
-    any.state.then( state => [state, any.oneOf(state.employeeIds) ]),
+    any.stateWithSampledEmployeeId,
     ([state, employeeId]) => {
 
         // Define State Updater
@@ -173,20 +183,11 @@ check.it(
     }
 )
 
-
-/*
-
-
-*/
 check.it(
     `when a supervisor's employee is terminated, the total size of their 
     subordinate tree decreases by one`,
-    any.state.suchThat( state => state.employeeIds.length > 1).then( state => 
-        any.oneOf(state.employeeIds)
-            .suchThat( employeeId => 
-                state.employeesById[employeeId].supervisor !== null
-            )
-            .then( employeeId => [ state, employeeId ])
+    any.stateWithSampledEmployeeId.suchThat( ([state, employeeId]) => 
+        state.employeesById[employeeId].supervisor !== null
     ),
     ([state, employeeIdToTerminate]) => {
 
