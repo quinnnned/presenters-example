@@ -4,4 +4,5 @@ import * as Redux from 'redux'
 export default Redux.compose(
     require('./rejectInvalidTerminations').default,
     require('./reassignSubordinatesOfTerminatedEmployees').default,
+    require('./existingEmployeesCannotBeHired').default,
 )

@@ -1,8 +1,6 @@
-import * as actors from '../actors'
+import * as actors from '../../actors'
 
-const defaultState = {}
-
-export default (state = defaultState, action) => {
+export default (state = {}, action) => {
     const {type, employeeId, employeeName, supervisor} = action
 
     switch (type) {
@@ -10,7 +8,10 @@ export default (state = defaultState, action) => {
         case actors.hireEmployee().type:
             return {
                 ...state,
-                [employeeId]: { employeeName, supervisor }
+                [employeeId]: { 
+                    employeeName, 
+                    supervisor 
+                }
             }
 
         case actors.reassignEmployee().type:
@@ -29,7 +30,5 @@ export default (state = defaultState, action) => {
         
         default:
             return state
-
     }
-
 }
