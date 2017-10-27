@@ -1,4 +1,6 @@
-import * as actors from '../../actors'
+import business from '../../../lib/redux-business'
+import {terminateEmployee, reassignEmployee} from '../../actors'
+
 
 const getSupervisor = (state, employeeId) =>
     state.employeesById[employeeId].supervisor
@@ -8,20 +10,17 @@ const getDirectSubordinates = (state, supervisor) =>
         getSupervisor(state, employeeId) === supervisor
     )
 
-export default (reducer) => (state, action) => {
+export default business(terminateEmployee, (state, action) => {
+   
+    const supervisorOfTerminatedEmployee = 
+        getSupervisor(state, action.employeeId)
 
-    if (action.type === actors.terminateEmployee().type) {
-        const employeeToTerminate = action.employeeId
-        
-        const reassignmentActions = 
-            getDirectSubordinates(state, employeeToTerminate)
-                .map( employeeId => actors.reassignEmployee(
-                    employeeId,
-                    getSupervisor(state, employeeToTerminate)
-                ))
+    const reassignmentActions = 
+        getDirectSubordinates(state, action.employeeId)
+            .map( suborinateOfTerminatedEmployee => reassignEmployee(
+                suborinateOfTerminatedEmployee,
+                supervisorOfTerminatedEmployee
+            ))
 
-        return [ action, ...reassignmentActions ].reduce(reducer, state)
-    }
-
-    return reducer(state, action)
-}
+    return [action, ...reassignmentActions]
+})

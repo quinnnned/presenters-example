@@ -1,13 +1,11 @@
+import business from '../../../lib/redux-business'
 import {hireEmployee} from '../../actors'
 
-export default (reducer) => (state, action) => {
-    const {type, employeeId} = action
+export default business(hireEmployee, (state, action) => {
 
-    if (type === hireEmployee().type) {
-        if (employeeId in state.employeesById) {
-            return state
-        } 
+    if (action.employeeId in state.employeesById) {
+        return []
     }
 
-    return reducer(state, action)
-}
+    return [action]
+})
