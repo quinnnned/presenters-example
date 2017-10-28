@@ -1,5 +1,5 @@
 import {terminateEmployee} from '../../actors'
-import business from '../../../lib/redux-business'
+import business from '../lib/redux-business'
 
 export default business(terminateEmployee, (state, action) => {
     const employeeToTerminate = 

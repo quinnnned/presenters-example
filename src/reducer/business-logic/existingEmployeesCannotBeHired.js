@@ -1,4 +1,4 @@
-import business from '../../../lib/redux-business'
+import business from '../lib/redux-business'
 import {hireEmployee} from '../../actors'
 
 export default business(hireEmployee, (state, action) => {
