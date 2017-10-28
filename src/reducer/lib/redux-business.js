@@ -2,6 +2,8 @@
 
 export default (actor, rule) => (reducer) => (state, action) => {
     
+    state = state || reducer(undefined, {})
+
     // Only apply rule for the given action type
     if (action.type === actor().type) {
         return rule(state, action).reduce(reducer, state)
