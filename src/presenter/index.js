@@ -1,7 +1,11 @@
-import {exampleEmployee} from '../test/helper'
+import presentEmployeeDeep from './presentEmployeeDeep'
 
 export default function presentState(state, dispatch) {
     return {
-        employee: exampleEmployee
+        employee: presentEmployeeDeep(
+            state, 
+            dispatch,
+            state.selectedEmployeeId
+        )
     }
 }
