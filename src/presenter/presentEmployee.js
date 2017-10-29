@@ -12,11 +12,27 @@ const getDirectSupervisor = (state, employeeId) =>
 const getIsTopSupervisor = (state, employeeId) =>
      getDirectSupervisor(state, employeeId) === null
 
-export default function presentEmployeeShallow(state, dispatch, employeeId) {
+const getDirectSubordinateIds = (state, supervisor) =>
+    state.employeeIds.filter( employeeId =>
+        getDirectSupervisor(state, employeeId) === supervisor
+    )
+
+export default function presentEmployee(state, dispatch, employeeId, cache={}) {
+
+    // Memoize
+    if (employeeId in cache) {
+        return cache[employeeId]
+    }
 
     const employee = {}
 
+    cache[employeeId] = employee
+
     employee.name = getEmployeeName(state, employeeId)
+
+    employee.subordinates = 
+        getDirectSubordinateIds(state, employeeId)
+            .map( id => presentEmployee(state, dispatch, id, cache) ) 
 
     employee.addSubordinate = (name) =>
         dispatch(
@@ -36,10 +52,11 @@ export default function presentEmployeeShallow(state, dispatch, employeeId) {
 
     if ( !getIsTopSupervisor(state, employeeId) ) {
         employee.boss = 
-            presentEmployeeShallow(
+            presentEmployee(
                 state, 
                 dispatch, 
-                getDirectSupervisor(state, employeeId)
+                getDirectSupervisor(state, employeeId),
+                cache
             )
     }
 

@@ -1,8 +1,8 @@
-import presentEmployeeDeep from './presentEmployeeDeep'
+import presentEmployee from './presentEmployee'
 
 export default function presentState(state, dispatch) {
     return {
-        employee: presentEmployeeDeep(
+        employee: presentEmployee(
             state, 
             dispatch,
             state.selectedEmployeeId
