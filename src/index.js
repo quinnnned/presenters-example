@@ -5,19 +5,28 @@ import * as Redux from 'redux'
 import * as ReactRedux from 'react-redux'
 import presenter from './presenter'
 import reducer from './reducer'
+import initialize from './initialize'
 
-const PresentedView = ReactRedux.connect(
-    state => ({state}),
-    dispatch => ({dispatch}),
-    ({state}, {dispatch}) => presenter(state, dispatch)
-)(View)
+const PresentedView = 
+    ReactRedux.connect(
+        state => ({state}),
+        dispatch => ({dispatch}),
+        ({state}, {dispatch}) => {
+            const props = presenter(state, dispatch)
+            console.info("Presented Props:", props)
+            return props
+        } 
+    )(View)
 
-const store = Redux.createStore(reducer)
-
-ReactDOM.render(
-    <ReactRedux.Provider store={store}>
-        <PresentedView />
-    </ReactRedux.Provider>,
-    document.getElementById('root')
+initialize(Redux.createStore(
+    reducer, 
+    "__REDUX_DEVTOOLS_EXTENSION__" in window 
+        && window.__REDUX_DEVTOOLS_EXTENSION__()
+)).then( store => 
+    ReactDOM.render(
+        <ReactRedux.Provider store={store}>
+            <PresentedView />
+        </ReactRedux.Provider>,
+        document.getElementById('root')
+    )
 )
-
